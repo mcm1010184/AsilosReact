@@ -1,20 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './src/components/Login';
+import Register from './src/components/Register';
+import Campains from './src/components/Campains'; 
+import OpenCampaigns from './src/components/OpenCampaigns';
+import CloseCampaigns from './src/components/CloseCampaigns';
+import Donacions from './src/components/Donacions';
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={({ navigation }) => ({ navigation })}
+      />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Campains" component={Campains} />
+      <Stack.Screen name="OpenCampaigns" component={OpenCampaigns} />
+      <Stack.Screen name="CloseCampaigns" component={CloseCampaigns} />
+      <Stack.Screen name="Donacions" component={Donacions} />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
